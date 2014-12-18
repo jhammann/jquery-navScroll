@@ -1,0 +1,27 @@
+{
+  "name": "jquery-navScroll",
+  "version": "1.0.0",
+  "authors": [
+    "Jeroen Hammann <info@hammannweb.com>"
+  ],
+  "description": "A simple jQuery plugin for animated scrolling to a section of your page with mobile dropdown support.",
+  "main": "jquery.navScroll.js",
+  "dependencies": {
+    "jquery": "*"
+  },
+  "keywords": [
+    "nav",
+    "scroll",
+    "jquery",
+    "mobile",
+    "dropdown"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

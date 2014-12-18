@@ -1,0 +1,121 @@
+/* The style below is made as an example, it's not part of the plugin but you can use it if you like :) */
+
+* {
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  box-sizing:border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #000;
+  line-height: 1.3;
+  -webkit-font-smoothing:antialiased;
+  padding-top: 50px;
+}
+
+a {
+  color: #27677c;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #1a4d7b;
+}
+
+a:visited {
+  color: #27677c;
+}
+
+section {
+  width: 100%;
+  height: 100%;
+  padding-top: 15px;
+  padding-left: 30px;
+}
+
+nav {
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.4);
+  padding-left: 30px;
+  background-color: white;
+}
+
+nav ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+nav li {
+  display: inline-block;
+  text-align: left;
+  margin-right: 40px;
+  font-weight: bold;
+  height: 50px;
+  line-height: 50px;
+}
+
+nav li a {
+  display: block;
+}
+
+.nav-mobile {
+  display: none;
+  font-weight: bold;
+  width: 100%;
+}
+
+#section1 {background-color: #D1D1D1;}
+#section2 {background-color: #DFDFDF;}
+#section3 {background-color: #C7C7C7;}
+
+.click-me {
+  width: 150px;
+  height: 30px;
+  background: #435AB8;
+  color: white;
+  text-align: center;
+  line-height: 30px;
+}
+
+.click-me a {
+  display: block;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    display: none;
+    background-color: white;
+    margin-left: -30px;
+  }
+  nav li {
+    width: 100%;
+    padding-left: 30px;
+  }
+  .nav-mobile {
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+  }
+}
+
+@media (min-width: 769px) {
+  nav ul {
+    display: block !important;
+  }
+}

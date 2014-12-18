@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery navScroll | Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-mobile">
+      Click
+    </div>
+    <ul>
+      <li><a href="#section1">Section 1</a></li>
+      <li><a href="#section2">Section 2</a></li>
+      <li><a href="#section3">Section 3</a></li>
+    </ul>
+  </nav>
+  <section id="section1">
+    <h1>Section 1</h1>
+    <p>
+      Drag your screen so its width is below 768 pixels to test the mobile dropdown functionality. <br>
+      You can set the breakpoint with an option. Read more about it in the README.
+    </p>
+  </section>
+  <section id="section2">
+    <h1>Section 2</h1>
+    <p>
+      You can call the plugin on any element you like as long as it contains an anchor tag with an href attribute.<br>
+      See the example button below:
+    </p>
+    <div class="click-me"><a href="#section1">Click me!</a></div>
+  </section>
+  <section id="section3">
+    <h1>Section 3</h1>
+  </section>
+
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="../jquery.navScroll.js"></script>
+  <script>
+    $('.nav').navScroll({
+      mobileDropdown: true,
+      mobileBreakpoint: 768
+    });
+
+    $('.click-me').navScroll();
+
+    $('.nav').on('click', '.nav-mobile', function (e) {
+      e.preventDefault();
+      $('.nav ul').slideToggle('fast');
+    });
+  </script>
+</body>
+</html>
