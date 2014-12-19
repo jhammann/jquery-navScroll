@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>jQuery navScroll | Demo</title>
   <link rel="stylesheet" href="style.css">
+  <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 </head>
 <body>
   <nav class="nav">
@@ -13,7 +14,7 @@
     <ul>
       <li><a href="#section1">Section 1</a></li>
       <li><a href="#section2">Section 2</a></li>
-      <li><a href="#section3">Section 3</a></li>
+      <li><a href="#section3" data-scrolltime="1500">Section 3</a></li>
     </ul>
   </nav>
   <section id="section1">
@@ -30,9 +31,14 @@
       See the example button below:
     </p>
     <div class="click-me"><a href="#section1">Click me!</a></div>
+    <p>
+      Since a button like this doesn't require an offset (it's not fixed like the navigation bar) I set the navHeight option to '0'.
+    </p>
   </section>
   <section id="section3">
     <h1>Section 3</h1>
+    As you may have noticed after clicking the 'Section 3' URL, the duration of the scrolling animation was way longer.<br>
+    You can set a specific scrollTime inside the data-scrolltime attribute (check the source).
   </section>
 
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -43,7 +49,9 @@
       mobileBreakpoint: 768
     });
 
-    $('.click-me').navScroll();
+    $('.click-me').navScroll({
+      navHeight: 0
+    });
 
     $('.nav').on('click', '.nav-mobile', function (e) {
       e.preventDefault();

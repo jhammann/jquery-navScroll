@@ -26,9 +26,9 @@
         mobileBreakpoint: 1024
       };
 
-  function NavScroll( element, options ) {
+  function NavScroll(element, options) {
     this.element = element;
-    this.options = $.extend( {}, defaults, options );
+    this.options = $.extend({}, defaults, options);
 
     this._defaults = defaults;
     this._name = pluginName;
@@ -37,17 +37,17 @@
   }
 
   NavScroll.prototype.init = function () {
-    var options, element, navItem, navOffset;
+    var options, element, navItem, navOffset, scrollTime;
     options = this.options;
     element = this.element;
 
-    if ( options.navItemClassName === '' ) {
+    if (options.navItemClassName === '') {
       navItem = $(element).find('a');
     } else {
       navItem = $(element).find('.' + options.navItemClassName);
     }
 
-    if ( options.navHeight === 'auto' ) {
+    if (options.navHeight === 'auto') {
       navOffset = $(element).height();
     } else if ( isNaN(options.navHeight) ) {
       throw new Error ('\'navHeight\' only accepts \'auto\' or a number as value.');
@@ -63,6 +63,12 @@
           targetOffset = $('#' + target).offset(),
           targetTop = targetOffset.top;
 
+      if ($(this).data('scrolltime') !== undefined) {
+        scrollTime = $(this).data('scrolltime');
+      } else {
+        scrollTime = options.scrollTime;
+      }
+
       if (options.mobileDropdown && $(window).width() >= 0 && $(window).width() <= options.mobileBreakpoint) {
         if (options.mobileDropdownClassName === '') {
           $(element).find('ul').slideUp('fast');
@@ -73,17 +79,17 @@
 
       $('html, body').stop().animate({
         scrollTop: targetTop - navOffset
-      }, options.scrollTime);
+      }, scrollTime);
     });
   };
 
-  $.fn[pluginName] = function ( options ) {
+  $.fn[pluginName] = function (options) {
     return this.each(function () {
       if (!$.data(this, 'plugin_' + pluginName)) {
         $.data(this, 'plugin_' + pluginName,
-        new NavScroll( this, options ));
+        new NavScroll(this, options));
       }
     });
   };
 
-})( jQuery, window, document );
+})(jQuery, window, document);
