@@ -1,13 +1,13 @@
 /*!
  * NavScroll.js
- * Version: 1.0.0
+ * Version: 1.1.1
  * Author: Jeroen Hammann
  *
  * Copyright (c) 2014 Jeroen Hammann
  * Released under the MIT license
 */
 
-;(function ( $, window, document, undefined ) {
+;(function ($, window, document, undefined) {
   'use strict';
 
   var pluginName = 'navScroll',
@@ -56,12 +56,17 @@
     }
 
     navItem.on('click', function(e){
-      e.preventDefault();
-      var url = this.href,
-          parts = url.split('#'),
-          target = parts[1],
-          targetOffset = $('#' + target).offset(),
-          targetTop = targetOffset.top;
+      var url, parts, target, targetOffset, targetTop;
+
+      url = this.href;
+      parts = url.split('#');
+      target = parts[1];
+
+      if (target !== undefined) {
+        e.preventDefault();
+        targetOffset = $('#' + target).offset();
+        targetTop = targetOffset.top;
+      }
 
       if ($(this).data('scrolltime') !== undefined) {
         scrollTime = $(this).data('scrolltime');
