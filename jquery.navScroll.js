@@ -1,6 +1,6 @@
 /*!
  * NavScroll.js
- * Version: 1.1.1
+ * Version: 1.2.0
  * Author: Jeroen Hammann
  *
  * Copyright (c) 2014 Jeroen Hammann
@@ -23,7 +23,9 @@
         // Additionaly you can insert the mobile nav's classname here, when left empty the plugin searches for a <ul> in the same parent element.
         mobileDropdownClassName: '',
         // The window width, which functions as a breakpoint between desktop and mobile.
-        mobileBreakpoint: 1024
+        mobileBreakpoint: 1024,
+        // Set to 'true' if you want to enable scrollspy.
+        scrollSpy: false
       };
 
   function NavScroll(element, options) {
@@ -36,56 +38,89 @@
     this.init();
   }
 
-  NavScroll.prototype.init = function () {
-    var options, element, navItem, navOffset, scrollTime;
-    options = this.options;
-    element = this.element;
+  NavScroll.prototype = {
+    init: function() {
+      var self, options, element, navItem, navOffset, scrollTime;
+      self = this;
+      options = self.options;
+      element = self.element;
 
-    if (options.navItemClassName === '') {
-      navItem = $(element).find('a');
-    } else {
-      navItem = $(element).find('.' + options.navItemClassName);
-    }
-
-    if (options.navHeight === 'auto') {
-      navOffset = $(element).height();
-    } else if ( isNaN(options.navHeight) ) {
-      throw new Error ('\'navHeight\' only accepts \'auto\' or a number as value.');
-    } else {
-      navOffset = options.navHeight;
-    }
-
-    navItem.on('click', function(e){
-      var url, parts, target, targetOffset, targetTop;
-
-      url = this.href;
-      parts = url.split('#');
-      target = parts[1];
-
-      if (target !== undefined) {
-        e.preventDefault();
-        targetOffset = $('#' + target).offset();
-        targetTop = targetOffset.top;
-      }
-
-      if ($(this).data('scrolltime') !== undefined) {
-        scrollTime = $(this).data('scrolltime');
+      if (options.navItemClassName === '') {
+        navItem = $(element).find('a');
       } else {
-        scrollTime = options.scrollTime;
+        navItem = $(element).find('.' + options.navItemClassName);
       }
 
-      if (options.mobileDropdown && $(window).width() >= 0 && $(window).width() <= options.mobileBreakpoint) {
-        if (options.mobileDropdownClassName === '') {
-          $(element).find('ul').slideUp('fast');
+      if (options.navHeight === 'auto') {
+        navOffset = $(element).height();
+      } else if (isNaN(options.navHeight)) {
+        throw new Error ('\'navHeight\' only accepts \'auto\' or a number as value.');
+      } else {
+        navOffset = options.navHeight;
+      }
+
+      navItem.on('click', function(e){
+        var url, parts, target, targetOffset, targetTop;
+
+        url = this.href;
+        parts = url.split('#');
+        target = parts[1];
+
+        if (target !== undefined) {
+          e.preventDefault();
+          targetOffset = $('#' + target).offset();
+          targetTop = targetOffset.top;
+        }
+
+        if ($(this).data('scrolltime') !== undefined) {
+          scrollTime = $(this).data('scrolltime');
         } else {
-          $('.' + options.mobileDropdownClassName).slideUp('fast');
+          scrollTime = options.scrollTime;
+        }
+
+        if (options.mobileDropdown && $(window).width() >= 0 && $(window).width() <= options.mobileBreakpoint) {
+          if (options.mobileDropdownClassName === '') {
+            $(element).find('ul').slideUp('fast');
+          } else {
+            $('.' + options.mobileDropdownClassName).slideUp('fast');
+          }
+        }
+
+        $('html, body').stop().animate({
+          scrollTop: targetTop - navOffset
+        }, scrollTime);
+      });
+
+      if (options.scrollSpy) {
+        var scrollItems;
+        scrollItems = [];
+
+        navItem.each(function() {
+          var scrollItemId = $(this).attr('href');
+          scrollItems.push($(scrollItemId));
+        });
+
+        $(window).on('scroll', function () {
+          self.scrollspy(navItem, scrollItems);
+        });
+        self.scrollspy(navItem, scrollItems);
+      }
+    },
+
+    scrollspy: function(navItem, scrollItems) {
+      var scrollPos, changeBounds, i, l;
+      scrollPos = $('body').scrollTop();
+      changeBounds = window.innerHeight / 2 || document.documentElement.clientHeight / 2;
+      l = navItem.length;
+
+      for (i = 0; l > i; i++) {
+        var item = scrollItems[i];
+        if (scrollPos > (item.offset().top - changeBounds)) {
+          navItem.removeClass('active');
+          $(navItem[i]).addClass('active');
         }
       }
-
-      $('html, body').stop().animate({
-        scrollTop: targetTop - navOffset
-      }, scrollTime);
-    });
+    }
   };
 
   $.fn[pluginName] = function (options) {

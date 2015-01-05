@@ -50,7 +50,7 @@ nav {
   top: 0;
   left: 0;
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.4);
-  padding-left: 30px;
+  padding-left: 20px;
   background-color: white;
 }
 
@@ -63,7 +63,6 @@ nav ul {
 nav li {
   display: inline-block;
   text-align: left;
-  margin-right: 40px;
   font-weight: bold;
   height: 50px;
   line-height: 50px;
@@ -71,6 +70,12 @@ nav li {
 
 nav li a {
   display: block;
+  padding: 0 40px;
+}
+
+.nav li a.active {
+  background-color: #27677c;
+  color: #FFF;
 }
 
 .nav-mobile {

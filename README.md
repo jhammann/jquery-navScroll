@@ -36,6 +36,7 @@ Include a recent version of jQuery and the navScroll plugin inside your page.
 | `mobileDropdown` | If your navigation hides and is used as a dropdown on small screens setting this to true hides the dropdown after a click. | Boolean | false |
 | `mobileDropdownClassName` | Additionaly you can insert the mobile nav's classname here, when left empty the plugin searches for a `<ul>` in the same parent element. | String | '' |
 | `mobileBreakpoint` | The 'mobile' breakpoint (like the max-width of a media query). It's recommended that you check this if you use mobile dropdown support. | Integer | 1024 |
+| `scrollSpy` | Set to true if you want to enable the scrollspy, it adds an active class to the nav items when you scroll past their sections. | Boolean | false |
 
 ### Specific scrollTime
 
@@ -50,3 +51,7 @@ The scrollTime option is for all `<a>` tags inside the element on which navScrol
 ### Version 1.1.1
 
 * [Bugfix] Clicking on `<a>` tags without a leading `#` in the href attribute now navigates you to the actual path and won't return an error.
+
+### Version 1.2.0
+
+* Added the option to enable scrollSpy which gives nav items an *active* class when you scroll past their sections.
