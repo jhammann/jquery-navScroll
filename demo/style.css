@@ -110,8 +110,12 @@ nav li a {
   }
   nav li {
     width: 100%;
-    padding-left: 30px;
   }
+
+  nav li a {
+    padding: 0 30px;
+  }
+
   .nav-mobile {
     display: inline-block;
     height: 50px;

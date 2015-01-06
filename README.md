@@ -44,14 +44,19 @@ The scrollTime option is for all `<a>` tags inside the element on which navScrol
 
 #Changelog
 
-### Version 1.1.0
+#### Version 1.1.0
 
 * Added support for the scrollTime data attribute.
 
-### Version 1.1.1
+#### Version 1.1.1
 
 * [Bugfix] Clicking on `<a>` tags without a leading `#` in the href attribute now navigates you to the actual path and won't return an error.
 
-### Version 1.2.0
+#### Version 1.2.0
 
 * Added the option to enable scrollSpy which gives nav items an *active* class when you scroll past their sections.
+
+#### Version 1.2.1
+
+* [Bugfix] ScrollSpy also works in IE. Added support for an older doctype.
+* Changed some styling for the demo.
