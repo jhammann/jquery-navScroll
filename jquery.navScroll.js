@@ -1,6 +1,6 @@
 /*!
  * NavScroll.js
- * Version: 1.2.0
+ * Version: 1.3.0
  * Author: Jeroen Hammann
  *
  * Copyright (c) 2014 Jeroen Hammann
@@ -25,7 +25,9 @@
         // The window width, which functions as a breakpoint between desktop and mobile.
         mobileBreakpoint: 1024,
         // Set to 'true' if you want to enable scrollspy.
-        scrollSpy: false
+        scrollSpy: false,
+        // Set to true if you want the parent of the anchor to have an active class instead of the anchor itself (only if ScrollSpy is enabled).
+        activeParent: false
       };
 
   function NavScroll(element, options) {
@@ -97,17 +99,19 @@
 
         navItem.each(function() {
           var scrollItemId = $(this).attr('href');
-          scrollItems.push($(scrollItemId));
+          if (scrollItemId.charAt(0) === '#') {
+            scrollItems.push($(scrollItemId));
+          }
         });
 
         $(window).on('scroll', function () {
-          self.scrollspy(navItem, scrollItems);
+          self.scrollspy(options, navItem, scrollItems);
         });
-        self.scrollspy(navItem, scrollItems);
+        self.scrollspy(options, navItem, scrollItems);
       }
     },
 
-    scrollspy: function(navItem, scrollItems) {
+    scrollspy: function(options, navItem, scrollItems) {
       var scrollPos, changeBounds, i, l;
       scrollPos = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
       changeBounds = window.innerHeight / 2 || document.documentElement.clientHeight / 2;
@@ -115,9 +119,16 @@
 
       for (i = 0; l > i; i++) {
         var item = scrollItems[i];
-        if (scrollPos > (item.offset().top - changeBounds)) {
-          navItem.removeClass('active');
-          $(navItem[i]).addClass('active');
+        if (item !== undefined) {
+          if (scrollPos > (item.offset().top - changeBounds)) {
+            if (options.activeParent) {
+              navItem.parent().removeClass('active');
+              $(navItem[i]).parent().addClass('active');
+            } else {
+              navItem.removeClass('active');
+              $(navItem[i]).addClass('active');
+            }
+          }
         }
       }
     }
