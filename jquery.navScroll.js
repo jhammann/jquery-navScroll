@@ -1,6 +1,6 @@
 /*!
  * NavScroll.js
- * Version: 1.3.0
+ * Version: 1.3.1
  * Author: Jeroen Hammann
  *
  * Copyright (c) 2014 Jeroen Hammann
@@ -27,7 +27,9 @@
         // Set to 'true' if you want to enable scrollspy.
         scrollSpy: false,
         // Set to true if you want the parent of the anchor to have an active class instead of the anchor itself (only if ScrollSpy is enabled).
-        activeParent: false
+        activeParent: false,
+        // Set the name of the active class. When left blank the class name will be 'active'.
+        activeClassName: 'active'
       };
 
   function NavScroll(element, options) {
@@ -122,11 +124,11 @@
         if (item !== undefined) {
           if (scrollPos > (item.offset().top - changeBounds)) {
             if (options.activeParent) {
-              navItem.parent().removeClass('active');
-              $(navItem[i]).parent().addClass('active');
+              navItem.parent().removeClass(options.activeClassName);
+              $(navItem[i]).parent().addClass(options.activeClassName);
             } else {
-              navItem.removeClass('active');
-              $(navItem[i]).addClass('active');
+              navItem.removeClass(options.activeClassName);
+              $(navItem[i]).addClass(options.activeClassName);
             }
           }
         }
