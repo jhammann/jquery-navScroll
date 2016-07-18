@@ -47,6 +47,13 @@ bower install jquery-nav-scroll
 | `activeParent` | Set to true if you want the parent of the anchor to have an active class instead of the anchor itself (only if ScrollSpy is enabled). | Boolean | false |
 | `activeParent` | Set the name of the active class when using ScrollSpy. | String | 'active' |
 
+## Callbacks
+
+| Name | Description | Type |
+|------|-------------|------|
+| `onScrollStart` | Callback function, will be executed when the scrolling animation starts. | Function |
+| `onScrollEnd` | Callback function, will be executed when the scrolling animations ends. | Function |
+
 #### Specific scrollTime
 
 The scrollTime option is for all `<a>` tags inside the element on which navScroll is called. If you want different scrollTimes for different anchors you have to include the data-attribute `data-scrolltime`. The value should be a number. The 'Section 3' URL in the [demo](http://jhammann.github.io/jquery-navScroll/demo/) is an example of this.

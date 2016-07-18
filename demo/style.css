@@ -102,6 +102,17 @@ nav li a {
   color: white;
 }
 
+.scroll-status {
+  background-color: black;
+  border-top-left-radius: 4px;
+  bottom: 0;
+  color: white;
+  display: none;
+  padding: 10px;
+  position: fixed;
+  right: 0;
+}
+
 @media (max-width: 768px) {
   nav ul {
     display: none;

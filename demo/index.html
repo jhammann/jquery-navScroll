@@ -17,6 +17,9 @@
       <li><a href="#section3" data-scrolltime="1500">Section 3</a></li>
     </ul>
   </nav>
+
+  <div class="scroll-status"></div>
+
   <section id="section1">
     <h1>Section 1</h1>
     <p>
@@ -44,10 +47,22 @@
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
   <script src="../jquery.navScroll.js"></script>
   <script>
+    var $scrollStatus = $('.scroll-status');
+
     $('.nav').navScroll({
       mobileDropdown: true,
       mobileBreakpoint: 768,
-      scrollSpy: true
+      scrollSpy: true,
+      onScrollStart: function() {
+        $scrollStatus.show();
+        $scrollStatus.text('Started scrolling');
+      },
+      onScrollEnd: function() {
+        $scrollStatus.text('Scrolling ended');
+        setTimeout(function() {
+          $scrollStatus.fadeOut(200);
+        }, 1000);
+      }
     });
 
     $('.click-me').navScroll({

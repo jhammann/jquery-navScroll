@@ -34,7 +34,10 @@
 
   function NavScroll(element, options) {
     this.element = element;
-    this.options = $.extend({}, defaults, options);
+    this.options = $.extend({
+      onScrollStart: function() {},
+      onScrollEnd: function() {}
+    }, defaults, options);
 
     this._defaults = defaults;
     this._name = pluginName;
@@ -92,7 +95,11 @@
 
         $('html, body').stop().animate({
           scrollTop: targetTop - navOffset
-        }, scrollTime);
+        }, scrollTime).promise().done(function() {
+          options.onScrollEnd.call(this);
+        });
+
+        options.onScrollStart.call(this);
       });
 
       if (options.scrollSpy) {
