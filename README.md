@@ -45,7 +45,7 @@ bower install jquery-nav-scroll
 | `mobileBreakpoint` | The 'mobile' breakpoint (like the max-width of a media query). It's recommended that you check this if you use mobile dropdown support. | Integer | 1024 |
 | `scrollSpy` | Set to true if you want to enable the scrollspy, it adds an active class to the nav items when you scroll past their sections. | Boolean | false |
 | `activeParent` | Set to true if you want the parent of the anchor to have an active class instead of the anchor itself (only if ScrollSpy is enabled). | Boolean | false |
-| `activeParent` | Set the name of the active class when using ScrollSpy. | String | 'active' |
+| `activeClassName` | Set the name of the active class when using ScrollSpy. | String | 'active' |
 
 ## Callbacks
 
