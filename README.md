@@ -60,6 +60,9 @@ The scrollTime option is for all `<a>` tags inside the element on which navScrol
 
 ## Changelog
 
+#### Version 1.4.0
+* Added the `onScrollStart` and `onScrollEnd` callback functions.
+
 #### Version 1.3.1
 
 * Added the `activeClassName` option. This makes it possible to change the class name the plugin gives to an active item when using ScrollSpy.
