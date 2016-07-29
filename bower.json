@@ -1,14 +1,11 @@
 {
   "name": "jquery-navScroll",
-  "version": "1.3.1",
+  "version": "1.4.0",
   "authors": [
     "Jeroen Hammann <info@hammannweb.com>"
   ],
   "description": "A simple jQuery plugin for animated scrolling to a section of your page with mobile dropdown and scrollspy support.",
   "main": "jquery.navScroll.js",
-  "dependencies": {
-    "jquery": "*"
-  },
   "keywords": [
     "nav",
     "scroll",
