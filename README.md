@@ -26,11 +26,15 @@ Include a recent version of jQuery and the navScroll plugin inside your page.
 </script>
 ```
 
-#### Install using bower
-**Optionally**, you can install jquery-navScroll with bower if you prefer:
+#### Install
+**Optionally**, you can install jquery-navScroll with bower or NPM if you prefer:
 
 ```shell
 bower install jquery-nav-scroll
+```
+
+```shell
+npm install jquery-nav-scroll
 ```
 
 ## Options
@@ -70,6 +74,9 @@ $('.nav').navScroll({
 ```
 
 ## Changelog
+
+#### Version 1.4.1
+* Added package.json
 
 #### Version 1.4.0
 * Added the `onScrollStart` and `onScrollEnd` callback functions.

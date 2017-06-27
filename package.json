@@ -1,11 +1,12 @@
 {
-  "name": "jquery-navScroll",
+  "name": "jquery-nav-scroll",
   "version": "1.4.1",
-  "authors": [
-    "Jeroen Hammann <info@hammannweb.com>"
-  ],
   "description": "A simple jQuery plugin for animated scrolling to a section of your page with mobile dropdown and scrollspy support.",
   "main": "jquery.navScroll.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jhammann/jquery-navScroll.git"
+  },
   "keywords": [
     "nav",
     "scroll",
@@ -14,12 +15,10 @@
     "dropdown",
     "scrollspy"
   ],
+  "author": "Jeroen Hammann",
   "license": "MIT",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ]
+  "bugs": {
+    "url": "https://github.com/jhammann/jquery-navScroll/issues"
+  },
+  "homepage": "https://github.com/jhammann/jquery-navScroll#readme"
 }

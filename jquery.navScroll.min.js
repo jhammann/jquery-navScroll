@@ -1,6 +1,6 @@
 /*!
  * NavScroll.js
- * Version: 1.4.0
+ * Version: 1.4.1
  * Author: Jeroen Hammann
  *
  * Copyright (c) 2014 Jeroen Hammann
