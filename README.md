@@ -27,15 +27,18 @@ Include a recent version of jQuery and the navScroll plugin inside your page.
 ```
 
 #### Install
-**Optionally**, you can install jquery-navScroll with bower or NPM if you prefer:
+You can install jquery-navScroll with NPM:
 
 ```shell
-bower install jquery-nav-scroll
+npm install jquery-nav-scroll -S
 ```
 
-```shell
-npm install jquery-nav-scroll
+You can also use a CDN:
+
 ```
+https://unpkg.com/jquery-nav-scroll/jquery.navScroll.min.js
+```
+
 
 ## Options
 
